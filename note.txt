@@ -1,0 +1,49 @@
+
+   Geo-fencing is a feature in a software program that uses the global positioning system (GPS) or radio frequency identification (RFID) 
+   to define geographical boundaries. 
+   A geofence is a virtual barrier.
+   
+   A pending Intent is an Intent that can be executed at a later time.
+   
+   The Video listing app is based on model view presenter pattern.
+
+model
+The model is responsible to provide list of videos as per the contract(through the interface) between the model and presenter.
+
+presenter
+The presenter has all the business logic and is also responsible for the communication between the model and the view such as the any video addition or deletion
+
+view
+The view is the layout view of the video listing.
+
+
+
+  val rxPermissions = RxPermissions(this)
+        
+        rxPermissions.request(Manifest.permission.READ_CONTACTS,Manifest.permission.READ_SMS,Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .subscribe { granted ->
+                    if (granted) {
+                        Toast.makeText(applicationContext,"permission granted",Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(applicationContext,"he permission has been denied",Toast.LENGTH_SHORT).show()
+
+                    }
+                }
+    }
+    
+	implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.3@aar'
+	
+	
+	
+	 val obs1 = Observable.from(Arrays.asList(1, 3, 5, 7, 9))
+    val obs2 = Observable.from(Arrays.asList(2, 4, 6))
+    val obs3 = Observable.from(Arrays.asList(32, 45, 86))
+
+    Observable.zip(obs1, obs2,obs3) { value1, value2, value3->
+        val list = ArrayList<Int>()
+        list.add(value1)
+        list.add(value2)
+        list.add(value3)
+
+        list
+    }.subscribe{i-> print(i)}
